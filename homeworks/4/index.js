@@ -62,7 +62,7 @@ if(itsThree.length === 0){
 // xxxx
 // xxxxx
 let star='';
-for (let i = 1; i<20; i++){
+for (let i = 1; i<=20; i++){
     star+='*';
     console.log(star)
 }
