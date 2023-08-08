@@ -8,18 +8,20 @@
 // Метод displayInfo() - выводит информацию о книге (название, автор и количество страниц).
 
 class Book {
-    constructor(title, author, pages){
-        this.title = title;
-        this.author = author;
-        this.pages = pages;
-    }
-    displayInfo(){
-        console.log(`Название книги: ${this.title}, Автор: ${this.author}, Количество страниц: ${this.pages}`);
-    }
+  constructor(title, author, pages) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+  }
+  displayInfo() {
+    console.log(
+      `Название книги: ${this.title}, Автор: ${this.author}, Количество страниц: ${this.pages}`
+    );
+  }
 }
 
-const book1 = new Book ('Война и мир', 'Л.Н. Толстой', 1300);
-book1.displayInfo()
+const book1 = new Book("Война и мир", "Л.Н. Толстой", 1300);
+book1.displayInfo();
 
 // Задание 2: ""Управление списком студентов""
 // Реализуйте класс Student, представляющий студента, со следующими свойствами и методами:
@@ -46,17 +48,17 @@ book1.displayInfo()
 // // Grade: 11th grade"
 
 class Student {
-    constructor(name, age, grade){
-        this.name = name;
-        this.age = age;
-        this.grade = grade;
-    }
-    displayInfo(){
-        console.log(`Name: ${this.name}`);
-        console.log(`Age: ${this.age}`);
-        console.log(`Grade: ${this.grade}`);
-        console.log("");
-    }
+  constructor(name, age, grade) {
+    this.name = name;
+    this.age = age;
+    this.grade = grade;
+  }
+  displayInfo() {
+    console.log(`Name: ${this.name}`);
+    console.log(`Age: ${this.age}`);
+    console.log(`Grade: ${this.grade}`);
+    console.log("");
+  }
 }
 const student1 = new Student("John Smith", 16, "10th grade");
 student1.displayInfo();
@@ -86,16 +88,27 @@ student2.displayInfo();
 
 // Будет доделано после прояснения задания.
 
-class Bank{
-    constructor(bankName){
-        this.bankName = bankName;
-    }
-    clients = [];
-    
+class Bank {
+  constructor(bankName) {
+    this.bankName = bankName;
+  }
+  clients = [];
+  accounts = [123456789, 987654321];
 
-
-    addClient(client){
-        this.clients.push(client);
-    }
-
+  addClient(client) {
+    this.clients.push(client);
+  }
 }
+
+class Client {
+  constructor(clientName, clientAge) {
+    this.clientName = clientName;
+    this.clientAge = clientAge;
+  }
+  clientAccounts = [];
+}
+
+const tinkoff = new Bank("Tinkoff");
+const client1 = new Client("Иван", 25);
+tinkoff.addClient(client1);
+console.log(tinkoff.clients);
