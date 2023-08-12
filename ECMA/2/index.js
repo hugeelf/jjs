@@ -89,26 +89,76 @@ student2.displayInfo();
 // Будет доделано после прояснения задания.
 
 class Bank {
-  constructor(bankName) {
-    this.bankName = bankName;
-  }
-  clients = [];
-  accounts = [123456789, 987654321];
-
+  name = 'My Bank'
+  clientsList = []
+  accountList = []
+  accountNumber = 1
   addClient(client) {
-    this.clients.push(client);
+      this.clientsList.push(client)
+  }
+  openAccount(client, balance) {
+      this.accountNumber++
+      let newAccountNumber = this.accountNumber
+      const newObj = {client, balance, newAccountNumber}
+      this.accountList.push(newObj)
+  }
+  displayInfoClient() {
+      for(let key of this.accountList){
+          if(key.client){
+              console.log(key);
+          }
+      }
+  }
+  deposit(name, amount) {
+      for(let key of this.accountList) {
+          if(key.client === name){
+              key.balance += amount
+          }
+      }
+  }
+  withdraw(name, amount) {
+      for(let key of this.accountList) {
+          if(key.client === name){
+              if (amount > key.balance) {
+                  console.log('operation cannot be performed');
+              } else {
+                  key.balance -= amount
+              }
+          }
+      }
+  }
+  checkBalance(name) {
+      for(let key of this.accountList){
+          if(name === key.client){
+              console.log('Balance is ' + key.balance);
+          }
+      }
   }
 }
 
 class Client {
-  constructor(clientName, clientAge) {
-    this.clientName = clientName;
-    this.clientAge = clientAge;
+  constructor(name, age) {
+      this.name = name
+      this.age = age
   }
-  clientAccounts = [];
+
 }
 
-const tinkoff = new Bank("Tinkoff");
 const client1 = new Client("Иван", 25);
-tinkoff.addClient(client1);
-console.log(tinkoff.clients);
+const client2 = new Client("Мария", 30);
+
+const bank = new Bank("Мой Банк");
+
+bank.addClient(client1)
+bank.openAccount(client1.name, 500)
+
+
+bank.addClient(client2)
+bank.openAccount(client2.name, 1000)
+
+bank.deposit("Мария", 500)
+
+bank.withdraw("Иван", 33)
+bank.displayInfoClient()
+
+bank.checkBalance("Иван")
