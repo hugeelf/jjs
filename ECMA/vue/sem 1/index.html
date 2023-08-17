@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+    <div id="app">
+      {{ message }}
+      <p> Товаров в корзине <span>{{productCounter}}</span></p>
+      <button 
+              v-for="button in buttons" 
+              @click=addProduct(button)
+              :key="button.id"
+      >
+        {{ button.text }}
+      </button>
+    </div>
+    <script>
+      const app = new Vue({
+        el: '#app',
+        data: {
+          message: 'Привет, Vue!',
+          productCounter: 0,
+          buttons:[
+            {id:1, text: "купить", inCart: false},
+            {id:2, text: "купить", inCart: false},
+            {id:3, text: "купить", inCart: false},
+            {id:4, text: "купить", inCart: false}
+          ],
+    
+        },
+        methods: {
+          addProduct(button){
+            if(!button.inCart){
+              this.productCounter++;
+              button.inCart = true;
+              button.text = 'Товар в корзине';
+            }
+            
+          },
+        }
+      })
+    </script>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>

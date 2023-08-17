@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+   
+
+    
+    <div id="app">{{ message }}
+       <button @click="generateNumber()">Генерировать случайное число</button> 
+       <h2>Сгенерированное число</h2>
+       <span>{{generatedNumber}}</span>
+       <h3>{{tip}}</h3>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+          el: "#app",
+          data: {
+            message: "Привет, Vue!",
+            buttonText: "Показать еще",
+            tip: '',
+            generatedNumber: '',
+          },
+          methods:{
+            generateNumber(){
+                const number = Math.floor(Math.random() * (11 - 1)) + 1;
+                this.generatedNumber = number;
+                if(number<5){
+                    this.tip = 'Число меньше 5';
+                }
+                else if(number>=5 && number<=9){
+                    this.tip = 'Число от 5 до 9';
+                }
+                else if(number == 10){
+                    this.tip = 'Число равно 10';
+                }
+                else{
+                    this.tip = 'Этого не было в задаче';
+                }
+            }
+          }
+        });
+      </script>
+      
+  </body>
+</html>
