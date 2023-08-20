@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="vue">
+      <ul>
+        <div>
+            <label for="">Имя</label>
+            <input type="text" v-model="currentContact.name">
+            <label for="">Фамилия</label>
+            <input type="text" v-model="currentContact.lastName">
+            <label for="">Email</label>
+            <input type="text" v-model="currentContact.email">
+            <button @click="addContact" >Добавить контакт</button>
+
+            
+        </div>
+
+      </ul>
+      <ul>
+        <li v-for="contact in contactList" :key="contact.email"></li>
+    </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#vue",
+        data: {
+          currentContact:{name: '', lastName: '', email:''},
+          contactList :[]
+        },
+        methods:{
+            addContact(){
+                this.contactList.push(this.currentContact)
+            }
+        }
+      });
+    </script>
+  </body>
+</html>

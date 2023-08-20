@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Jost:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Interno</title>
+  </head>
+  <body>
+    <div id="app">
+      <nav class="header center">
+        <a href="./index.html" class="header__logo-link">
+          <img :src="logoLink" alt="logo" class="logo__img" />
+          <span>Interno</span>
+        </a>
+        <ul class="header__links">
+          <li class="header__link" v-for="link in links" :key="link.id">
+            <a :href="link.address" class="header__link">{{link.name}}</a>
+          </li>
+        </ul>
+      </nav>
+      <section class="post center">
+        <h2 class="post__title title_medium">Latest Post</h2>
+        <div class="post__element">
+          <img :src="post.img" alt="" class="post__img">
+          <div class="post__text">
+            <h4 class="post__title">
+              {{post.title}}
+            </h4>
+            <p class="post__description">
+              {{post.shortDescription}}
+            </p>
+            <p class="post__thing">
+              {{post.mainThing}}
+            </p>
+            <div class="news-preview__wrap">
+              <p class="news-preview__date">{{post.date}}</p>
+              <button class="button_main">
+                <svg
+                  width="9"
+                  height="16"
+                  viewBox="0 0 9 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1.27101 14.9525L7.21387 8.26683L1.27101 1.58112"
+                    stroke="#292F36"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+          </div>
+        </div>
+      </section>
+      <section class="news center">
+        <h2 class="news__title title_medium">Articles & News</h2>
+        <ul class="news__list">
+          <li class="news-preview" v-for="preview in news" :key="preview.id">
+            <div class="news-preview__visual">
+              <img
+                :src="preview.img"
+                alt="product image"
+                class="news-preview__img"
+              />
+              <button class="button news-preview__button button_visual">
+                {{preview.category}}
+              </button>
+            </div>
+            <div class="news-preview__footer">
+              <h4 class="news-preview__title">{{preview.title}}</h4>
+              <div class="news-preview__wrap">
+                <p class="news-preview__date">{{preview.date}}</p>
+                <button class="button_main">
+                  <svg
+                    width="9"
+                    height="16"
+                    viewBox="0 0 9 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1.27101 14.9525L7.21387 8.26683L1.27101 1.58112"
+                      stroke="#292F36"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <div class="pagination">
+          <button class="button_main pagination__button button_active">01</button>
+          <button class="button_main pagination__button">02</button>
+          <button class="button_main pagination__button">03</button>
+          <button class="button_main pagination__button">
+            <svg
+              width="9"
+              height="16"
+              viewBox="0 0 9 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1.55714 15L7.5 8.31429L1.55714 1.62857"
+                stroke="#292F36"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="./scripts/main.js"></script>
+  </body>
+</html>

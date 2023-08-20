@@ -42,8 +42,9 @@
                 this.buttonText = this.buttonText.split('').reverse().join('');
             },
             addElement(){
+              this.elementCounter++;
                 this.elements.push({
-                    text: 'Новый элемент списка'});
+                   id: this.elementCounter, text: 'Новый элемент списка'});
             },
             removeElement(id){
                 this.elements.splice(id,1);
