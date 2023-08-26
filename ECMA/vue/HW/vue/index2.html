@@ -7,9 +7,9 @@
   </head>
   <body>
     <div id="app">
-      <div v-if="isSorted==='noSort'">
+      <div>
         <ul>
-          <li v-for="product in products" :key="product.name">
+          <li v-for="product in sortedData" :key="product.name">
             <p>{{product.name}}</p>
             <p>{{product.price}}</p>
             <br />
@@ -19,7 +19,7 @@
           <button @click="isSorted='noSort'">По умолчанию</button>
         </ul>
       </div>
-      <div v-else-if="isSorted==='priceUp'">
+      <!-- <div v-else-if="isSorted==='priceUp'">
         <ul>
           <li v-for="product in priceUp" :key="product.name">
             <p>{{product.name}}</p>
@@ -42,7 +42,7 @@
           <button @click="isSorted='priceDown'">По убыванию цены</button>
           <button @click="isSorted='noSort'">По умолчанию</button>
         </ul>
-      </div>
+      </div> -->
       
     </div>
 
@@ -64,11 +64,15 @@
         methods: {
         },
         computed: {
-          priceUp() {
-            return this.products.slice().sort((a,b)=>a.price-b.price);
-          },
-          priceDown() {
-            return this.products.slice().sort((a,b)=>a.price-b.price).reverse();
+          sortedData() {
+            switch(this.isSorted){
+              case 'priceUp': 
+                return [...this.products].slice().sort((a,b)=>a.price-b.price);
+              case 'priceDown': 
+                return [...this.products].slice().sort((a,b)=>b.price-a.price);
+              case 'noSort': 
+                return this.products;
+            }
           },
         },
       });

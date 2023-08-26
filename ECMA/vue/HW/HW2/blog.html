@@ -17,7 +17,7 @@
       <nav class="header center">
         <a href="./index.html" class="header__logo-link">
           <img :src="logoLink" alt="logo" class="logo__img" />
-          <span>Interno</span>
+          <span>{{siteName}}</span>
         </a>
         <ul class="header__links">
           <li class="header__link" v-for="link in links" :key="link.id">
@@ -25,10 +25,21 @@
           </li>
         </ul>
       </nav>
+      <section class="articles">
+        <div class="center articles__die">
+          <h2 class="articles__title title_medium">
+            Articles & News
+          </h2>
+          <ul class="articles__breadcrumbs">
+            <li class="articles__breadcrumb post__description"><a href="index.html">Home</a></li>
+            <li class="articles__breadcrumb post__description"><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+      </section>
       <section class="post center">
         <h2 class="post__title title_medium">Latest Post</h2>
         <div class="post__element">
-          <img :src="post.img" alt="" class="post__img">
+          <img :src="post.img" alt="post image" class="post__img">
           <div class="post__text">
             <h4 class="post__title">
               {{post.title}}
@@ -123,6 +134,36 @@
           </button>
         </div>
       </section>
+      <footer class="center footer">
+        <div class="footer__company">
+          <a href="./index.html" class="header__logo-link footer__header">
+            <img :src="logoLink" alt="logo" class="logo__img" />
+            <span>{{siteName}}</span>
+          </a>
+          <p class="post__description footer__info">It is a long established fact that a reader will be distracted lookings.</p>
+          <div class="footer__social">
+            <ul class="footer__social-links">
+              <li class="footer__link" v-for="socialLink in socialLinks" :key="socialLink.id">
+                <a :href="socialLink.address"><img :src="socialLink.img" alt="social link"></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer__links-wrapper">
+          <p class="news-preview__title footer__title">Pages</p>
+          <ul class="header__links footer__links">
+            <li class="header__link" v-for="link in links" :key="link.id">
+              <a :href="link.address" class="header__link">{{link.name}}</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__contacts">
+          <p class="news-preview__title footer__title">Contact</p>
+          <a href="https://goo.gl/maps/Vq5nBg7oARGYqGN66" class="header__link contacts__address">55 East Birchwood Ave. Brooklyn, New York 11201</a>
+          <a href="mailto:contact@interno.com" class="header__link contacts__address">contact@interno.com</a>
+          <a href="tel:+1234567890" class="header__link contacts__address">(123) 456 - 7890</a>
+        </div>
+      </footer>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
